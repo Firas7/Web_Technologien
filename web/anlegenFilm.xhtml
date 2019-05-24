@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Neue Film</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </h:head>
+    <h:body>
+        <ui:include src="header.xhtml" />
+        <ui:include src="menue.xhtml" />
+        
+        <script>
+            var act = document.getElementById("newMovie");
+            act.className += " active";
+        </script>
+        
+        <h3> Neue Film anlegen:</h3><br/>
+             <br/>     
+        <h:form>
+                <br/>
+                <div class="grid-container">
+                <div class="grid-item">Titel:  <h:inputText value="#{movie.title}" /></div><br/>
+                <div class="grid-item">Regisseur:
+                <h:selectOneMenu value = "#{movie.regisseur}"> 
+                    <f:selectItem itemValue = "1" itemLabel = "Ankrum, David" /> 
+                    <f:selectItem itemValue = "2" itemLabel = "Ashley, Graham (I)" />
+                    <f:selectItem itemValue = "3" itemLabel = "Austin, Mark Anthony" /> 
+                    <f:selectItem itemValue = "4" itemLabel = "Hamill, Mark (I)" />
+                    <f:selectItem itemValue = "5" itemLabel = "Ford, Harrison (I)" />
+                </h:selectOneMenu></div><br/>
+                <div class="grid-item">Schauspieler:<br/>
+                <h:selectManyListbox value = "#{movie.schauspieler}"> 
+                    <f:selectItem itemValue = "Ankrum, David" itemLabel = "Ankrum, David" /> 
+                    <f:selectItem itemValue = "Ashley, Graham (I)" itemLabel = "Ashley, Graham (I)" />
+                    <f:selectItem itemValue = "Austin, Mark Anthony" itemLabel = "Austin, Mark Anthony" /> 
+                    <f:selectItem itemValue = "Hamill, Mark (I)" itemLabel = "Hamill, Mark (I)" />
+                    <f:selectItem itemValue = "Ford, Harrison (I)" itemLabel = "Ford, Harrison (I)" />
+                </h:selectManyListbox></div>	<br/>
+                
+                <div class="grid-item">Jahr:  <h:inputText value="#{movie.erscheinungsjahr}" /></div><br/>
+                
+                <!---->
+                <div class="grid-item">Genre:
+                <h:selectManyCheckbox id="genre" value="#{movie.genres}">
+                    <f:selectItem itemValue="Action" itemLabel="Action" />
+                    <f:selectItem itemValue="Adventure" itemLabel="Adventure" />
+                    <f:selectItem itemValue="Fantasy" itemLabel="Fantasy" />
+                    <f:selectItem itemValue="Sci-Fi" itemLabel="Sci-Fi" />
+                </h:selectManyCheckbox></div><br/>
+                
+                <div class="grid-item">
+                    <h:commandButton value="Speichern ..."
+                                     action="#{movieController.anlegenFilm(movie.title, 
+                                               movie.regisseur, movie.erscheinungsjahr,movie.genres, 
+                                               movie.schauspieler)}"/></div><br/><br/>
+                                               <!--, movie.genre-->
+                    <br/>
+                </div>
+        </h:form>
+    </h:body>
+</html>
+

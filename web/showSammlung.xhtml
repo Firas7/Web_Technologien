@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Sammlung</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="../style.css"/>
+    </h:head>
+    <h:body>
+        <ui:include src="header.xhtml" />
+        <ui:include src="menue.xhtml" />
+        
+        <script>
+            var act = document.getElementById("showSammlung");
+            act.className += " active";
+        </script>
+        
+        <div>
+            <h:form id="sammlungForm">
+                <h:commandButton value="SammlungLaden" action="#{zeigeSammlungController.ladeSammlung(benutzer.username)}">
+                    <f:ajax render="dt1" />
+                </h:commandButton>
+                <h:dataTable id="dt1" value="#{zeigeSammlungController.movieDTOList}" var="s"
+                             styleClass="order-table"
+                             headerClass="order-table-header">
+                    <h:column>
+                        <f:facet name="header">id</f:facet>
+                        #{s.id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">title</f:facet>
+                        #{s.title}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">regisseur</f:facet>
+                        #{s.regisseur}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">year</f:facet>
+                        #{s.year}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">type</f:facet>
+                        #{s.type}
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </div>
+        
+        <ui:include src="footer.xhtml" />
+    </h:body>
+</html>
