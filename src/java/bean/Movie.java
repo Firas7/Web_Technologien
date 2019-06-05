@@ -15,11 +15,11 @@ public class Movie {
     @Size(min=0, max=20)
     private String title;
     private int regisseur;
-    private List<String> schauspieler = new ArrayList<>();
+    private List<String> schauspieler = new ArrayList<String>();
     @Min(1000)
     @Max(2018)
     private int erscheinungsjahr;
-    private List<String> genres=new ArrayList<>();
+    private List<String> genres=new ArrayList<String>();
    
     public Movie() {
     }
@@ -64,7 +64,7 @@ public class Movie {
         this.genres = genreList;
     }
     public List genreWahlen(){
-        List<String> result=new ArrayList<>();
+        List<String> result=new ArrayList<String>();
     /**    
         if(CheckBox Action is Cecked)
         {

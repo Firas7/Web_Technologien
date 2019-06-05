@@ -99,7 +99,7 @@ public class MovieFactory {
 	}
         
 	public static List<Movie> findByUser(String username) {
-		ArrayList<Movie> list= new ArrayList<>();
+		ArrayList<Movie> list= new ArrayList<Movie>();
 		
 		Connection conn= DBConnection.getConnection();
 		

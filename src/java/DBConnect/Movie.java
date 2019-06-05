@@ -14,9 +14,7 @@ public class Movie {
 	private int year;
 	private char type;
 	
-        public Movie(){
-            
-        }
+        public Movie(){}
         
         public Movie(long id, String title, int regisseur, int year, char type){
             this.id=id;

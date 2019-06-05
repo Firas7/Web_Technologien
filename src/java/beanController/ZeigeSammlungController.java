@@ -25,7 +25,7 @@ public class ZeigeSammlungController {
      * Creates a new instance of ZeigeSammlungController
      */
     public ZeigeSammlungController() {
-        movieDTOList = new ArrayList<>();
+        movieDTOList = new ArrayList<MovieDTO>();
     }
     
     /**
