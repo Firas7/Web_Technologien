@@ -1,0 +1,6 @@
+geschafft: Datenbank angelegt + Entities Java Klassen programmiert + die Verbindung zur Datenbank gebaut.
+
+to do: 	1- versuchen einen Film zur Datenbank hinzufügen
+	2- wenn 1 erfolgreich erledigt ist, versuchen diesen Film über xhtml Seite hinzufügen.
+	3- User registieren + einloggen.
+ 
