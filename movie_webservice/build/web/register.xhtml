@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Registering</title>
+    </h:head>
+    <h:body>
+        <h:form style="position: absolute; top: 250px; left: 500px"> 
+              <h2>register JSF</h2>
+            <h:outputLabel value="username" for="username"></h:outputLabel>
+            <h:inputText id="username" required="true" value="#{user.username}"></h:inputText>
+            <br/>
+            <h:outputLabel value="password" for="password"></h:outputLabel>
+            <h:inputText id="password" required="true" value="#{user.password}"></h:inputText>
+            <br/> 
+            <h:commandButton value="register" action="#{registerController.register(user.username, user.password)}"></h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+

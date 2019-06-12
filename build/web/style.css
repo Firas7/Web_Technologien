@@ -1,0 +1,79 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28.05.2018, 12:38:33
+    Author     : Philip
+*/
+
+div {
+    margin: 0 200px 10px;
+}
+
+a {
+    color: green;
+    border-style: solid none solid none;
+    border-color: green;
+}
+
+h1 {
+    text-decoration: underline;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: auto;
+    padding: auto;
+    width: 10%;
+    background-color: white;
+    height: 100%; /* Full height */
+    position: fixed; /* Make it stick, even on scroll */
+    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+    display: block;
+    border-right: 3px;
+    border-color: blue;
+    border-style: none solid none none;
+}
+
+li {
+    border-bottom: 1.0px;
+    border-top: 0.5px;
+    border-right: 0.5px;
+    border-left: 0.5px;
+    border-style: solid;
+    border-radius: 0px;
+    display: block;
+}
+
+li a:hover{
+    background-color: lightblue;
+}
+
+li a.active {
+    background-color: blue;
+    color: white;
+}
+
+nav a{
+        color: black;
+        border-style: none;
+}
+
+li a{
+        display: block;
+        width: 100%;
+}
+
+.footer {
+    position: fixed;
+    margin: 0 200px 10px; 
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+}

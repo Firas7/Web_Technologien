@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<head>
+	    <title>Login</title>
+	</head>
+	<h:body>
+            
+            <h:form style="position: absolute; top: 250px; left: 500px"> 
+                <h2>Login JSF</h2>
+                <h:outputLabel value="username"/>
+                <h:inputText value="#{user.username}"/>
+                <br/>
+                <h:outputLabel value="password"/> 
+                <h:inputText value="#{user.password}"/>
+                <br/>
+                <h:commandButton value="Login" action="#{loginController.validate(user.username, user.password)}"></h:commandButton>
+                </h:form>
+	</h:body>
+</html>
+
