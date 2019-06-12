@@ -44,12 +44,13 @@ public class movieController implements Serializable{
        
         for(int i = 0; i < genres.size(); i++){
             MovieGenre mg = new MovieGenre();
-            String genreString = genres.get(i);
-            Genre genre = GenreFactory.findGenreByName(genreString);
-           /* mg.setMovieId(movie.getId());
-            mg.setGenreId(genreList.get(0).getGenreId());
-            System.out.println(genreList.get(0).getGenreId());
-            mg.insert();*/
+            Long genreId = Long.valueOf(genres.get(i));
+            System.out.println(genres.get(i));
+            
+            Genre genre = GenreFactory.findGenreById(genreId);
+            mg.setMovieId(movie.getId());
+            mg.setGenreId(genre.getGenreId());
+            mg.insert();
         }
        
     }

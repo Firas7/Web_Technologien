@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class GenreFactory {
     
-    public static Genre findGenreById(int id) throws ClassNotFoundException{
+    public static Genre findGenreById(long id) throws ClassNotFoundException{
     
         Connection conn = null;
         PreparedStatement stat = null ;
@@ -30,7 +30,7 @@ public class GenreFactory {
         try{
             conn = DBConnector.getConnector();
             stat = conn.prepareStatement(sql);
-            stat.setInt(1, id);
+            stat.setLong(1, id);
             result = stat.executeQuery();
             
             if(result.next()){
@@ -51,18 +51,23 @@ public class GenreFactory {
         ResultSet result = null;
         Genre genre = null;
        
+       
         
         try{
             conn = DBConnector.getConnector();
-            String sql = "select * from genre where genre = '"+genreName+"'";
+            String sql = "select * from genre where genre = ?";
             stat = conn.prepareStatement(sql);
+            stat.setString(1, genreName);
             result = stat.executeQuery();
-            if(result.next()){
+            
+            while(result.next()){
+                
                 genre = new Genre();
-                genre.setGenreId(new Long(result.getInt("genreID")));
+                genre.setGenreId(result.getLong("genreID"));
                 genre.setGenre(result.getString("genre"));
-                System.out.println(genre.getGenreId());
-                System.out.println(genre.getGenre());
+                System.out.println("*************"+ genre.getGenreId());
+                System.out.println("*************"+genre.getGenre());
+                
             }
             
         }catch(SQLException ex){
