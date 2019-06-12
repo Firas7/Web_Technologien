@@ -31,6 +31,10 @@ import javax.inject.Scope;
 
 public class movieController implements Serializable{
     
+    int movieId; 
+    int personId;
+   
+    
     public void addNewMovie(String title, int year, int regisseur, char type, List<String> genres) throws ClassNotFoundException, SQLException{
         Movie movie = new Movie();
         //MovieCharacter movieCharacters = new MovieCharacter();
@@ -53,6 +57,22 @@ public class movieController implements Serializable{
             mg.insert();
         }
        
+    }
+    
+    public int getMovieId() {
+        return movieId;
+    }
+
+    public int getPersonId() {
+        return personId;
+    }
+
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
     
 }
