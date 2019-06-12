@@ -18,6 +18,10 @@ public class Person {
     private String lastname;
     private String sex;
     private ArrayList<MovieCharacter> characters;
+    
+    public Person() {
+        
+    }
 
     public Person(String name, String lastname, String sex) {
         this.name = name;
