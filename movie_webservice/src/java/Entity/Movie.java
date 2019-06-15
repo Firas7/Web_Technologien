@@ -29,18 +29,22 @@ public class Movie {
     private int regisseur;
     private ArrayList<Genre> genre;
     private ArrayList<MovieCharacter> characters;
+    private int stars; 
 
      public Movie(){
     
     }
      
-    public Movie(String title, int year, char type, int regisseur) {
+    public Movie(String title, int year, char type, int regisseur, int stars) {
         this.title = title;
         this.year = year;
         this.type = type;
         this.regisseur = regisseur;
         this.genre = new ArrayList<Genre>();
+        this.stars = stars; 
     }
+    
+    
     public void setId(long id) {
         this.id = id;
     }
@@ -99,6 +103,15 @@ public class Movie {
     
     public void setGenre(Genre genre){
         this.genre.add(genre);
+    }
+    
+    public int getStars() {
+        return stars; 
+    }
+    
+    
+    public void setStars(int star) {
+        this.stars = star; 
     }
     
     

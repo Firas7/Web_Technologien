@@ -28,6 +28,15 @@ public class Movie implements Serializable{
     private int regisseur;
     private ArrayList<String> genre;
     private ArrayList<String> characters;
+    private int stars; 
+    
+    public void setStars(int star){
+        this.stars = star; 
+    }
+    
+    public int getStars() {
+        return stars; 
+    }
 
     public String getTitle() {
         return title;

@@ -35,13 +35,14 @@ public class movieController implements Serializable{
     int personId;
    
     
-    public void addNewMovie(String title, int year, int regisseur, char type, List<String> genres) throws ClassNotFoundException, SQLException{
+    public void addNewMovie(String title, int year, int regisseur, char type, List<String> genres, int stars) throws ClassNotFoundException, SQLException{
         Movie movie = new Movie();
         //MovieCharacter movieCharacters = new MovieCharacter();
         movie.setTitle(title);
         movie.setYear(year);
         movie.setRegisseur(regisseur);
         movie.setType(type);
+        movie.setStars(stars);
         movie.insert();
         
         movie = MovieFactory.findMovieByTitle(title);

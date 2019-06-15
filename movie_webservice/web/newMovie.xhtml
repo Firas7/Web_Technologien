@@ -9,11 +9,20 @@
     <h:body>
         <h:form>
             <div><h:outputText value="Title"/> 
-                <h:inputText value="#{movie.title}" required="true"/></div><br/>
+                <h:inputText value="#{movie.title}" required="true"/></div>
+                
+            <br/>
+                
             <div><h:outputText value="Year"/>
-                <h:inputText value="#{movie.year}" required="true"/> </div><br/>
-                <div><h:outputText value="Type"/>
-                    <h:inputText value="#{movie.type}" required="true"/> </div><br/>
+                <h:inputText value="#{movie.year}" required="true"/> </div>
+                
+            <br/>
+            
+            <div><h:outputText value="Type"/>
+                <h:inputText value="#{movie.type}" required="true"/> </div>
+            
+            <br/>
+            
             <div class="grid-item">Regisseur:
                 <h:selectOneMenu value = "#{movie.regisseur}"> 
                     <f:selectItem itemValue = "1" itemLabel = "Ankrum, David" /> 
@@ -21,23 +30,39 @@
                     <f:selectItem itemValue = "3" itemLabel = "Austin, Mark Anthony" /> 
                     <f:selectItem itemValue = "4" itemLabel = "Hamill, Mark (I)" />
                     <f:selectItem itemValue = "5" itemLabel = "Ford, Harrison (I)" />
-                </h:selectOneMenu></div><br/>
+                </h:selectOneMenu></div>
+            
+            <br/>
                 
-                <div class="genre-item">
-                    <h:selectManyCheckbox value="#{movie.genre}">
-                        <f:selectItem itemValue="1" itemLabel="Science-Fiction"/>
-                        <f:selectItem itemValue="2" itemLabel="Sport"/>
-                        <f:selectItem itemValue="3" itemLabel="Action"/>
-                        <f:selectItem itemValue="4" itemLabel="Horror"/>
-                        <f:selectItem itemValue="5" itemLabel="Liebe"/>
-                        <f:selectItem itemValue="6" itemLabel="Krieg"/>
-                        <f:selectItem itemValue="7" itemLabel="Erotik"/>
-                        <f:selectItem itemValue="8" itemLabel="Fantasy"/>
-                        <f:selectItem itemValue="9" itemLabel="Biografie"/>
-                        <f:selectItem itemValue="10" itemLabel="Komödie"/>
-                    </h:selectManyCheckbox>
-                </div>
-                <h:commandButton value="add" action='#{movieController.addNewMovie(movie.title, movie.year, movie.regisseur,movie.type,movie.genre)}'></h:commandButton>
+            <div class="genre-item">
+                <h:selectManyCheckbox value="#{movie.genre}">
+                    <f:selectItem itemValue="1" itemLabel="Science-Fiction"/>
+                    <f:selectItem itemValue="2" itemLabel="Sport"/>
+                    <f:selectItem itemValue="3" itemLabel="Action"/>
+                    <f:selectItem itemValue="4" itemLabel="Horror"/>
+                    <f:selectItem itemValue="5" itemLabel="Liebe"/>
+                    <f:selectItem itemValue="6" itemLabel="Krieg"/>
+                    <f:selectItem itemValue="7" itemLabel="Erotik"/>
+                    <f:selectItem itemValue="8" itemLabel="Fantasy"/>
+                    <f:selectItem itemValue="9" itemLabel="Biografie"/>
+                    <f:selectItem itemValue="10" itemLabel="Komödie"/>
+                </h:selectManyCheckbox>
+            </div>
+            
+            <br/>
+                
+            <div class="grid-item">Stars: 
+            <h:selectOneMenu value = "#{movie.stars}"> 
+                <f:selectItem itemValue = "1" itemLabel = "1 Stern" /> 
+                <f:selectItem itemValue = "2" itemLabel = "2 Sterne" />
+                <f:selectItem itemValue = "3" itemLabel = "3 Sterne" /> 
+                <f:selectItem itemValue = "4" itemLabel = "4 Sterne" />
+                <f:selectItem itemValue = "5" itemLabel = "5 Sterne" />
+            </h:selectOneMenu></div>
+            
+            <br/>
+                
+            <h:commandButton value="add" action='#{movieController.addNewMovie(movie.title, movie.year, movie.regisseur, movie.type, movie.genre, movie.stars)}'></h:commandButton>
         </h:form>
     </h:body>
 </html>
