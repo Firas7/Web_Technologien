@@ -38,7 +38,6 @@ public class movieController implements Serializable{
        
         try{
                 Movie movie = new Movie();
-                System.out.println(title);
                 movie.setTitle(title);
                 movie.setYear(year);
                 movie.setRegisseur(regisseur);
@@ -46,7 +45,6 @@ public class movieController implements Serializable{
                 movie.setStars(stars);
                 movie.insert();
                 movie = MovieFactory.findMovieByTitle(title);
-                
                 MovieGenre mg = new MovieGenre();
                 
                
@@ -55,12 +53,11 @@ public class movieController implements Serializable{
                     Genre genre = GenreFactory.findGenreById(Long.valueOf(genres.get(i)));
                     mg.setMovieId(movie.getId());
                     mg.setGenreId(genre.getGenreId());
-                    mg.insert();             
+                    mg.insert();
               }
                
                 MovieCharacter mc = new MovieCharacter();
-                for(int i = 0; i < characters.size();i++){ 
-                    
+                for(int i = 0; i < characters.size();i++){
                     Person person = PersonFactory.findUserByPersonName(characters.get(i));
                     mc.setMovieID(movie.getId());
                     mc.setCharacter(characters.get(i));
@@ -82,7 +79,6 @@ public class movieController implements Serializable{
         System.out.println(username);
         System.out.println(movie.getId());
         usernamemovies.insert();
-        
         return "success";
     }
 }

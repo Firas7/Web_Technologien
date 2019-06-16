@@ -22,7 +22,7 @@ public class GenreFactory {
     public static Genre findGenreById(long id) throws ClassNotFoundException{
     
         Connection conn = null;
-        PreparedStatement stat = null ;
+        PreparedStatement stat = null;
         ResultSet result = null;
         Genre genre = null;
         String sql = "select * from genre where genreID = ? ";
@@ -64,10 +64,7 @@ public class GenreFactory {
                 
                 genre = new Genre();
                 genre.setGenreId(result.getLong("genreID"));
-                genre.setGenre(result.getString("genre"));
-                System.out.println("*************"+ genre.getGenreId());
-                System.out.println("*************"+genre.getGenre());
-                
+                genre.setGenre(result.getString("genre"));  
             }
             
         }catch(SQLException ex){

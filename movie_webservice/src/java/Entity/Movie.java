@@ -19,7 +19,7 @@ import javax.inject.Named;
  * @author Firas
  */
 
-@Named(value = "movie")
+
 public class Movie {
     
     private long id;
@@ -118,12 +118,13 @@ public class Movie {
         PreparedStatement  stat = null;
         try{
             conn = DBConnector.getConnector();
-            String sql = "insert into movie (movieTitle, year, type, regisseur ) values (?,?,?,?)";
+            String sql = "insert into movie (movieTitle, year, type, regisseur, sterne ) values (?,?,?,?,?)";
             stat = conn.prepareStatement(sql);
             stat.setString(1, getTitle());
             stat.setInt(2, getYear());
             stat.setString(3, String.valueOf(getType()));
             stat.setInt(4, getRegisseur());
+            stat.setInt(5, getStars());
             stat.executeUpdate();
             conn.close();
         }catch(SQLException e){
@@ -136,3 +137,9 @@ public class Movie {
         return this.id + ", "+this.title + ": " + this.year + ", " + this.type;
     }
 }
+
+/*
+educate.iust.edu.sy/iust/ui/common/welcomeIndex.faces
+ja510033
+jtjt@@
+*/

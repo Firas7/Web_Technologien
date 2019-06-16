@@ -39,6 +39,8 @@ public class MovieFactory {
                 movie.setId(result.getLong("movieID"));
                 movie.setTitle(title);
                 movie.setYear(result.getInt("year"));
+                movie.setRegisseur(result.getInt("regisseur"));
+                movie.setStars(result.getInt("sterne"));
                 
             }
         }catch(SQLException ex){
@@ -80,7 +82,8 @@ public class MovieFactory {
      PreparedStatement stat = null;
      ResultSet result = null;
      Movie movie = null;
-     String sql = "SELECT * from userMovie um join movie m on um.movieID = m.movieID join user u on um.username = u.unsername where username = ?";
+     String sql = "select movie.movieID, movie.movieTitle, movie.year, movie.regisseur, movie.sterne from usermovie inner join user on usermovie.username = user.username \n" +
+                  "inner join movie on usermovie.`movieID` = movie.`movieID` where user.username = ?";
      
      try{
          conn = DBConnector.getConnector();
@@ -89,8 +92,11 @@ public class MovieFactory {
          result = stat.executeQuery();
          while(result.next()){
              movie = new Movie();
-             movie.setTitle(result.getString("title"));
+             movie.setId(result.getLong("movieID"));
+             movie.setTitle(result.getString("movieTitle"));
              movie.setYear(result.getInt("year"));
+             movie.setRegisseur(result.getInt("Regisseur"));
+             movie.setStars(result.getInt("sterne"));
              movies.add(movie);
          }
      }catch(SQLException ex){
@@ -99,4 +105,62 @@ public class MovieFactory {
      return movies;
     }
     
+    public static List<Movie> findMoviesByTitle(String title) throws ClassNotFoundException{
+      
+     List<Movie> movies = new ArrayList<Movie>();
+     Connection conn = null;
+     PreparedStatement stat = null;
+     ResultSet result = null;
+     Movie movie = null;
+     String sql = "select movieID, movieTitle, year, regisseur from movie where upper(movieTitle) like upper(?)";
+     
+     try{
+         conn = DBConnector.getConnector();
+         stat = conn.prepareStatement(sql);
+         stat.setString(1, title);
+         result = stat.executeQuery();
+         while(result.next()){
+             movie = new Movie();
+             movie.setId(result.getLong("movieID"));
+             movie.setTitle(result.getString("movieTitle"));
+             movie.setYear(result.getInt("year"));
+             movie.setRegisseur(result.getInt("Regisseur"));
+             movies.add(movie);
+         }
+     }catch(SQLException ex){
+         ex.printStackTrace();
+     }
+     return movies;
+    }
+    
+    public static List<Movie> findByRegisseur(String regisseur) throws ClassNotFoundException{
+        
+           List<Movie> movies = new ArrayList<Movie>();
+            Connection conn = null;
+            PreparedStatement stat = null;
+            ResultSet result = null;
+            Movie movie = null;
+            String sql = "select movie.movieID, movie.movieTitle, movie.year, movie.sterne from movie inner join person on movie.regisseur = person.personID where upper(person.name) like upper(?)";
+    
+        try{
+            conn = DBConnector.getConnector();
+            stat = conn.prepareStatement(sql);
+            stat.setString(1, regisseur);
+            result = stat.executeQuery();
+            while(result.next()){
+                movie = new Movie();
+                movie.setId(result.getLong("movieID"));
+                movie.setTitle(result.getString("movieTitle"));
+                movie.setYear(result.getInt("year"));
+                movie.setStars(result.getInt("sterne"));
+                movies.add(movie);
+        }
+        }catch(SQLException ex){
+         ex.printStackTrace();
+        }
+            
+        return movies;
+        
+    }
+      
 }

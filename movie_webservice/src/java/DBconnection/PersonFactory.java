@@ -3,24 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package DBconnection;
 
 import Entity.Person;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
-/** To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-import Entity.Person;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
 
 /**
  *
@@ -32,26 +24,49 @@ public class PersonFactory {
         
     }
     
+    public static Person findUserByID(long id) throws ClassNotFoundException{
+        Person person = null;
+        
+        try{
+            Connection conn = DBConnector.getConnector();
+            String sql = "select * from person where personID = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setLong(1, id);
+            ResultSet result = stmt.executeQuery();
+            while(result.next()){
+                person = new Person();
+                person.setId(result.getLong("personID"));
+                person.setName(result.getString("name"));
+                person.setLastname(result.getString("lastname"));
+                person.setSex(result.getString("sex"));
+            }
+        
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return person;
+    }
+    
     /*
      @para personName */
     public static Person findUserByPersonName(String personName) throws SQLException, ClassNotFoundException{
         
         Person person = null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
         try{
             
-            Connection conn = DBConnector.getConnector();
-            String sql = "select * from person where name = '" + personName + "' ";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            conn = DBConnector.getConnector();
+            String sql = "select * from person where name = ? ";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, personName);
             ResultSet result = stmt.executeQuery();
            if(result.next()){
-               
                person = new Person();
+               person.setId(result.getLong("personID"));
                person.setName(result.getString("name"));
-               person.setLastname(result.getString("lastname"));
-               person.setSex(result.getString("sex")); 
-               System.err.println(result.getString("name"));
-               System.err.println(result.getString("lastname")); 
-               System.err.println(result.getString("sex")); 
+               //person.setLastname(result.getString("lastname"));
+               person.setSex(result.getString("sex"));
            }
         }catch(SQLException ex){
             ex.printStackTrace();
@@ -84,4 +99,8 @@ public class PersonFactory {
         return persons;
     }
     
+    
 }
+
+
+

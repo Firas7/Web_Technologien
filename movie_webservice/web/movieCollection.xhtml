@@ -14,28 +14,29 @@
             var act = document.getElementById("showSammlung");
             act.className += " active";
         </script>
-        <h2> here you can see your movie collection </h2>
+        <h2> here can you see your movie collection </h2>
+        
         <h:form>
             <h:commandButton id="collection" value="load my own collection" action="#{collectionController.ladeCollection(user.username)}"> 
                 <f:ajax render="DT"></f:ajax>
             </h:commandButton>
             <h:dataTable id="DT" value="#{collectionController.movieDTOList}" var="m"> 
-             <h:column>
+                    <h:column>
                     <f:facet name="header">id</f:facet>
                         #{m.id}
-                    </h:column>
+                    </h:column>&emsp;
                     <h:column>
                         <f:facet name="header">title</f:facet>
-                        #{m.title}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">regisseur</f:facet>
-                        #{m.regisseur}
-                    </h:column>
+                        #{m.title   }
+                    </h:column>&emsp;
                     <h:column>
                         <f:facet name="header">year</f:facet>
                         #{m.year}
-                    </h:column>
+                    </h:column>&emsp;
+                    <h:column>
+                        <f:facet name="header">Stars</f:facet>
+                        #{m.stars}
+                    </h:column>&emsp;
             </h:dataTable>
         </h:form>
     </h:body>
