@@ -30,6 +30,7 @@ create table movie(
 	year INTEGER,
 	type char,
     regisseur INTEGER,
+	sterne INTEGER,
     CONSTRAINT pk_movie PRIMARY KEY (movieID),
     CONSTRAINT fk_movie FOREIGN KEY (regisseur) REFERENCES person(personID)
 )
