@@ -61,8 +61,7 @@ public class User implements Serializable {
         this.password = password;
     }
     
-    @Override 
-    public String toString(){
+    @Override public String toString(){
         
         return "Username: " + this.getUsername() + "Password: " + this.getPassword();
     }
@@ -79,6 +78,7 @@ public class User implements Serializable {
             stat.setString(2, getPassword());
             stat.executeUpdate();
             conn.commit();
+            
         }catch(SQLException e){
             e.getSQLState();
         }finally{

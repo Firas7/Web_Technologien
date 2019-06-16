@@ -55,7 +55,6 @@ public class MovieGenre {
         }finally {
             stat.close();
             conn.close();
-            
         }
         
     }

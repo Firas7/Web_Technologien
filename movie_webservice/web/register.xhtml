@@ -12,7 +12,7 @@
             <h:inputText id="username" required="true" value="#{user.username}"></h:inputText>
             <br/>
             <h:outputLabel value="password" for="password"></h:outputLabel>
-            <h:inputText id="password" required="true" value="#{user.password}"></h:inputText>
+            <h:inputSecret id="password" required="true" value="#{user.password}"></h:inputSecret>
             <br/> 
             <h:commandButton value="register" action="#{registerController.register(user.username, user.password)}"></h:commandButton>
         </h:form>

@@ -39,8 +39,9 @@ AUTO_INCREMENT = 1000;
 create table movieHasGenre(
     movieID INTEGER,
     genreID INTEGER,
-    CONSTRAINT pk_movieGenre PRIMARY KEY(movieID),
-    CONSTRAINT fk_movieGenre FOREIGN KEY (genreID) REFERENCES genre(genreID)
+    CONSTRAINT pk_movieGenre PRIMARY KEY (movieID,genreID),
+    CONSTRAINT fk_movieGenre1 FOREIGN  KEY(movieID) REFERENCES movie(movieID),
+    CONSTRAINT fk_movieGenre2 FOREIGN KEY (genreID) REFERENCES genre(genreID)
 );
 
 

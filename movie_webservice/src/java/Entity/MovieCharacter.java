@@ -5,40 +5,85 @@
  */
 package Entity;
 
+import DBconnection.DBConnector;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Firas
  */
 public class MovieCharacter {
     
-    private Movie movie;
-    private Person person;
+    private long id;
+    private long movieID;
+    private long personID;
     private String character;
     
     public MovieCharacter(){
     
     }
-    public MovieCharacter(Movie movie, Person person, String character) {
-        this.movie = movie;
-        this.person = person;
+    public MovieCharacter(long movieid, long personid, String character) {
+        this.movieID = movieid;
+        this.personID = personid;
         this.character = character;
     }
   
-    public Movie getMovie() {
-        return movie;
+    
+    public long getId() {
+        return id;
     }
 
-    public Person getPerson() {
-        return person;
+    public String getCharacter() {
+        return character;
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setCharacter(String character) {
+        this.character = character;
     }
     
+    public long getMovieID() {
+        return movieID;
+    }
+
+    public long getPersonID() {
+        return personID;
+    }
+
+    public void setMovieID(long movieid) {
+        this.movieID = movieid;
+    }
+
+    public void setPersonID(long personid) {
+        this.personID = personid;
+    }
     
+    public void insert() throws ClassNotFoundException{
+        
+        Connection conn = null;
+        PreparedStatement stat = null;
+        String sql = "insert into movieCharacter (charact,movieID,personID) values (?,?,?) ";
+        
+        try{
+            conn = DBConnector.getConnector();
+            stat = conn.prepareStatement(sql);
+            stat.setString(1, getCharacter());
+            stat.setLong(2,getMovieID());
+            stat.setLong(3, getPersonID());
+            stat.executeUpdate();
+            conn.close();
+            
+        }catch(SQLException e){
+            e.getSQLState();
+        }
+        
+        
+      
+    }
 }

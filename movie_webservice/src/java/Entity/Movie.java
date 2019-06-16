@@ -43,8 +43,6 @@ public class Movie {
         this.genre = new ArrayList<Genre>();
         this.stars = stars; 
     }
-    
-    
     public void setId(long id) {
         this.id = id;
     }
@@ -104,15 +102,15 @@ public class Movie {
     public void setGenre(Genre genre){
         this.genre.add(genre);
     }
-    
+
     public int getStars() {
-        return stars; 
+        return stars;
+    }
+
+    public void setStars(int stars) {
+        this.stars = stars;
     }
     
-    
-    public void setStars(int star) {
-        this.stars = star; 
-    }
     
     
     public void insert() throws ClassNotFoundException{
@@ -132,15 +130,7 @@ public class Movie {
             e.getSQLState();
         }
     }
-    
-    public void update(){
-    
-    }
-    
-    public void delete(){
-    
-    }
-   
+
     @Override
     public String toString(){
         return this.id + ", "+this.title + ": " + this.year + ", " + this.type;

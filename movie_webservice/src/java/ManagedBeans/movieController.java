@@ -7,10 +7,13 @@ package ManagedBeans;
 
 import DBconnection.GenreFactory;
 import DBconnection.MovieFactory;
+import DBconnection.PersonFactory;
 import Entity.Genre;
 import Entity.Movie;
 import Entity.MovieCharacter;
 import Entity.MovieGenre;
+import Entity.Person;
+import Entity.UsernameMovies;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -31,49 +34,55 @@ import javax.inject.Scope;
 
 public class movieController implements Serializable{
     
-    int movieId; 
-    int personId;
-   
-    
-    public void addNewMovie(String title, int year, int regisseur, char type, List<String> genres, int stars) throws ClassNotFoundException, SQLException{
-        Movie movie = new Movie();
-        //MovieCharacter movieCharacters = new MovieCharacter();
-        movie.setTitle(title);
-        movie.setYear(year);
-        movie.setRegisseur(regisseur);
-        movie.setType(type);
-        movie.setStars(stars);
-        movie.insert();
-        
-        movie = MovieFactory.findMovieByTitle(title);
+    public String addNewMovie(String title, int year, int regisseur, char type, List<String> genres, List<String> characters, int stars) throws ClassNotFoundException, SQLException{
        
-        for(int i = 0; i < genres.size(); i++){
-            MovieGenre mg = new MovieGenre();
-            Long genreId = Long.valueOf(genres.get(i));
-            System.out.println(genres.get(i));
-            
-            Genre genre = GenreFactory.findGenreById(genreId);
-            mg.setMovieId(movie.getId());
-            mg.setGenreId(genre.getGenreId());
-            mg.insert();
+        try{
+                Movie movie = new Movie();
+                System.out.println(title);
+                movie.setTitle(title);
+                movie.setYear(year);
+                movie.setRegisseur(regisseur);
+                movie.setType(type);
+                movie.setStars(stars);
+                movie.insert();
+                movie = MovieFactory.findMovieByTitle(title);
+                
+                MovieGenre mg = new MovieGenre();
+                
+               
+             for(int i = 0; i < genres.size(); i++){
+                  
+                    Genre genre = GenreFactory.findGenreById(Long.valueOf(genres.get(i)));
+                    mg.setMovieId(movie.getId());
+                    mg.setGenreId(genre.getGenreId());
+                    mg.insert();             
+              }
+               
+                MovieCharacter mc = new MovieCharacter();
+                for(int i = 0; i < characters.size();i++){ 
+                    
+                    Person person = PersonFactory.findUserByPersonName(characters.get(i));
+                    mc.setMovieID(movie.getId());
+                    mc.setCharacter(characters.get(i));
+                    mc.setPersonID(person.getId());
+                    mc.insert();
+                }
+        }catch(SQLException ex){
+            ex.printStackTrace();
         }
-       
+        return "addToCollection";
     }
     
-    public int getMovieId() {
-        return movieId;
+    public String addToMyCollection(String username, String movieTitle) throws ClassNotFoundException, SQLException{
+        
+        UsernameMovies usernamemovies = new UsernameMovies();
+        Movie movie = MovieFactory.findMovieByTitle(movieTitle);
+        usernamemovies.setMvoieID(movie.getId());
+        usernamemovies.setUsername(username);
+        System.out.println(username);
+        System.out.println(movie.getId());
+        usernamemovies.insert();
+        
+        return "success";
     }
-
-    public int getPersonId() {
-        return personId;
-    }
-
-    public void setMovieId(int movieId) {
-        this.movieId = movieId;
-    }
-
-    public void setPersonId(int personId) {
-        this.personId = personId;
-    }
-    
 }

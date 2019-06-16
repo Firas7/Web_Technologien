@@ -14,7 +14,7 @@
                 <h:inputText value="#{user.username}"/>
                 <br/>
                 <h:outputLabel value="password"/> 
-                <h:inputText value="#{user.password}"/>
+                <h:inputSecret value="#{user.password}"/>
                 <br/>
                 <h:commandButton value="Login" action="#{loginController.validate(user.username, user.password)}"></h:commandButton>
                 </h:form>
