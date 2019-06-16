@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
     <h:head>
         <title>Registering</title>
     </h:head>
@@ -9,10 +11,12 @@
         <h:form style="position: absolute; top: 250px; left: 500px"> 
               <h2>register JSF</h2>
             <h:outputLabel value="username" for="username"></h:outputLabel>
-            <h:inputText id="username" required="true" value="#{user.username}"></h:inputText>
+            <h:inputText id="username" required="true" value="#{user.username}" validatorMessage="Username muss aus min.4 und max.10 Zeichen bestehen">
+            <f:validateLength minimum="4" maximum="10"></f:validateLength></h:inputText><h:message for="username" id="msg"/>
             <br/>
             <h:outputLabel value="password" for="password"></h:outputLabel>
-            <h:inputSecret id="password" required="true" value="#{user.password}"></h:inputSecret>
+            <h:inputSecret id="password" required="true" validatorMessage="Passwort muss aus min.4 und max.8 Zeichen bestehen" value="#{user.password}">
+            <f:validateLength minimum="4" maximum="8"></f:validateLength></h:inputSecret><h:message for="password" id="msg2"/>
             <br/> 
             <h:commandButton value="register" action="#{registerController.register(user.username, user.password)}"></h:commandButton>
         </h:form>
