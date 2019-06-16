@@ -99,4 +99,32 @@ public class MovieFactory {
      return movies;
     }
     
+    
+    public static List<Movie> findMovieByStars(int stars) throws ClassNotFoundException, SQLException {
+        
+        ArrayList<Movie> movies = new ArrayList<Movie>();
+        Connection conn = null;
+        PreparedStatement stat = null;
+        ResultSet result = null;
+        Movie movie = null;
+        String sql = "SELECT * from movie where sterne = ?"; 
+       
+        try {
+            conn = DBConnector.getConnector();
+            stat = conn.prepareStatement(sql);
+            stat.setInt(5, stars);
+            result = stat.executeQuery();
+            while(result.next()){
+                movie = new Movie();
+                movie.setTitle(result.getString("title"));
+                movie.setYear(result.getInt("year"));
+                movies.add(movie);
+            }
+        }catch(SQLException ex) {
+            ex.printStackTrace(); 
+        }
+        
+        return movies; 
+    }
+    
 }

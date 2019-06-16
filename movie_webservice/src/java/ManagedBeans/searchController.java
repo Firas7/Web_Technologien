@@ -44,4 +44,11 @@ public class searchController {
         moviesList = MovieFactory.findMoviesByTitle(input);
         
     }
+    
+    /*
+    * load Movies by stars
+    */
+    public void searchMovieByStars(int stars) throws SQLException, ClassNotFoundException{
+        moviesList = MovieFactory.findMoviesByStars(stars); 
+    }
 }
