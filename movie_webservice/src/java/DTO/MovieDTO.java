@@ -22,6 +22,7 @@ public class MovieDTO {
     private int regisseur;
     private int year;
     private char type;
+    private int stars;
 
         
     public MovieDTO(){
@@ -68,8 +69,17 @@ public class MovieDTO {
         return type;
     }
 
+    public int getStars() {
+        return stars;
+    }
+
+    public void setStars(int stars) {
+        this.stars = stars;
+    }
+
     
-    public static void fillMovieDTOList(List<MovieDTO> moieDTOList, String username) throws ClassNotFoundException, SQLException{
+    
+    public static void fillMovieDTOList(List<MovieDTO> movieDTOList, String username) throws ClassNotFoundException, SQLException{
         List<Movie> movieList = MovieFactory.findByUser(username);
         
         for (Movie m : movieList) {
@@ -78,10 +88,30 @@ public class MovieDTO {
             mDTO.setTitle(m.getTitle());
             mDTO.setType(m.getType());
             mDTO.setYear(m.getYear());
+            mDTO.setStars(m.getStars());
             mDTO.setRegisseur(m.getRegisseur());
-            moieDTOList.add(mDTO);
-
+            movieDTOList.add(mDTO);
+            System.out.println(mDTO.getTitle());
         }
+    }
+    
+    public static void findMovieInCollection(List<MovieDTO> movieDTOList, String title, String username) throws ClassNotFoundException, SQLException{
+    
+        List<Movie> movieList = MovieFactory.findByUser(username);
+        for(int i = 0 ; i < movieList.size(); i++){
+            if(movieList.get(i).getTitle().equalsIgnoreCase(title)){
+                MovieDTO mDTO = new MovieDTO();
+                mDTO.setId(movieList.get(i).getId());
+                mDTO.setTitle(movieList.get(i).getTitle());
+                mDTO.setType(movieList.get(i).getType());
+                mDTO.setYear(movieList.get(i).getYear());
+                mDTO.setStars(movieList.get(i).getStars());
+                mDTO.setRegisseur(movieList.get(i).getRegisseur());
+                movieDTOList.add(mDTO);
+            }
+    
+        }
+ 
     }
    
 }

@@ -66,15 +66,16 @@ public class searchController {
             break;
             case "2": searchList = MovieFactory.findByRegisseur(input);
             break;
+            case "3": searchList = MovieFactory.findByCharacter(input);
+            break;
+            case "4": searchList = MovieFactory.findByGenre(input);
+            break;
+            case "5": searchList = MovieFactory.findByYear(input);
+            break;
+            case "6": searchList = MovieFactory.findByStars(input);
+            break;
         }
         
         return "";
-    }
-    
-    /*
-    * load Movies by stars
-    */
-    public void searchMovieByStars(int stars) throws SQLException, ClassNotFoundException{
-        moviesList = MovieFactory.findMoviesByStars(stars); 
     }
 }

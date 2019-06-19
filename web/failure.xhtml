@@ -1,17 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Fehlgeschlagen</title>
+        <title>Failure</title>
     </h:head>
     <h:outputStylesheet library="css" name="/style.css"  />
-    <h:body >
-        
+    <h:body style="position: absolute; top: 250px; left: 500px">
+        <h2> password is incorrect</h2>
         <h:form id="form" styleClass="form">
             <h2> Huch...dein Passwort war wohl nicht ganz richtig..</h2>
             <h3> Bitte versuch es doch direkt nochmal </h3>
-            <h:commandButton value="Erneut versuchen.." action="register.xhtml"></h:commandButton>
+            <h:commandButton value="Erneut versuchen.." action="login"></h:commandButton>
         </h:form>
     </h:body>
 </html>

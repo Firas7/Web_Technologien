@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import javax.enterprise.context.SessionScoped;
 
 import javax.inject.Named;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /**
  *
@@ -22,22 +24,25 @@ import javax.inject.Named;
 @SessionScoped
 public class Movie implements Serializable{
     
+    private long id;
     private String title;
+    
     private int year;
     private char type;
     private int regisseur;
     private ArrayList<String> genre;
     private ArrayList<String> characters;
     private int stars; 
+
     
-    public void setStars(int star){
-        this.stars = star; 
-    }
-    
-    public int getStars() {
-        return stars; 
+     public void setId(long id) {
+        this.id = id;
     }
 
+    public long getId() {
+        return id;
+    }
+    
     public String getTitle() {
         return title;
     }
@@ -84,6 +89,14 @@ public class Movie implements Serializable{
 
     public ArrayList<String> getCharacters() {
         return characters;
+    }
+
+    public int getStars() {
+        return stars;
+    }
+
+    public void setStars(int stars) {
+        this.stars = stars;
     }
     
     

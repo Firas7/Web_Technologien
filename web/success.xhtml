@@ -4,22 +4,14 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Herzlich Willkommen  </title>
+        <title>Weclome to our page </title>
+        <h:outputStylesheet library="css" name="style.css" />
     </h:head>
-     <h:outputStylesheet library="css" name="style.css"  />
     <h:body>
-          <ui:include src="menu.xhtml"/>  
-  
-      <div style="margin-left:25%;padding:1px 16px;height:1000px;">
-     <h1> Herzlich Willkommen  <h:outputLabel value="#{user.username}"/>
-        </h1>
-     
-  <h3>Hier könnte ein Bild hin....</h3>
-  
-</div>
-
-           
-     
+        <ui:include src="menu.xhtml"/> 
+        <div>
+            Welcome <h:outputLabel value="#{user.username}"/>
+        </div>
     </h:body>
 </html>
 

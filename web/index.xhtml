@@ -5,17 +5,18 @@
       xmlns:h="http://java.sun.com/jsf/html">
           
     <h:head>
-        <title>Filme  </title>
-
+        <title>Index page </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-             <h:outputStylesheet library="css" name="style.css"  />
-
-
+     <h:outputStylesheet library="css" name="style.css"/>
     <h:body>
-        <h3> Herzlich Willkommen </h3>
-        <a href="login.xhtml">Login</a> <br/>
-        <a href="register.xhtml">Jetzt registrieren</a>     
+        <h:form styleClass="form">
+            <h3> Welcome to our page </h3>
+            <h:commandButton value="Login" action="login"/>
+            <h:commandButton value="Register" action="register"/>
+        
+        </h:form>
+            
     </h:body>
 </html>
 

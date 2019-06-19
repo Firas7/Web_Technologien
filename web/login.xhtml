@@ -4,24 +4,21 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
     <h:head>
-        <title>Login  </title>
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="style.css" />
     </h:head>
-         <h:outputStylesheet library="css" name="style.css"  />
-
 	<h:body>
             
-            <h:form id="form" styleClass="form"> 
-                <h2>JSF login </h2>
-                <h:outputLabel value="Benutzer"/>
+            <h:form styleClass="form"> 
+                <h2>Login JSF</h2>
+                <h:outputLabel value="username"/>
                 <h:inputText value="#{user.username}"/>
                 <br/>
-                <h:outputLabel value="Passwort"/> 
+                <h:outputLabel value="password"/> 
                 <h:inputSecret value="#{user.password}"/>
                 <br/>
-                <h:commandButton value="Login" action="#{loginController.validate(user.username, user.password)}"></h:commandButton>
-                <p class="message">Noch nicht registriert? <a href="register.xhtml">Jetzt registrieren</a> </p>
+                <h:commandButton value="login" action="#{loginController.validate(user.username, user.password)}"></h:commandButton>
+                 <p class="message">Noch nicht registriert? <a href="register.xhtml">Jetzt registrieren</a></p>
             </h:form>
 	</h:body>
 </html>

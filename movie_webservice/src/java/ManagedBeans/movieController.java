@@ -70,6 +70,7 @@ public class movieController implements Serializable{
         return "addToCollection";
     }
     
+  
     public String addToMyCollection(String username, String movieTitle) throws ClassNotFoundException, SQLException{
         
         UsernameMovies usernamemovies = new UsernameMovies();
@@ -81,4 +82,5 @@ public class movieController implements Serializable{
         usernamemovies.insert();
         return "success";
     }
+  
 }

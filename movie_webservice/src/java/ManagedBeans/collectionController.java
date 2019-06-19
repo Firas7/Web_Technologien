@@ -5,13 +5,18 @@
  */
 package ManagedBeans;
 
+import DBconnection.MovieFactory;
 import DTO.MovieDTO;
+import Entity.Movie;
+import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
@@ -20,7 +25,7 @@ import javax.inject.Named;
  */
 @ManagedBean
 @Named("collectionController")
-@RequestScoped
+@ViewScoped
 
 public class collectionController implements Serializable{
         
@@ -37,7 +42,15 @@ public class collectionController implements Serializable{
         MovieDTO.fillMovieDTOList(movieDTOList,username);
     }
     
+    public void ladeMovieFromCollection(String title , String username) throws SQLException, ClassNotFoundException{
+      MovieDTO.findMovieInCollection(movieDTOList,title,username);
+    }
     
-     
-    
+    public String deleteFromCollection(long id , String username) throws ClassNotFoundException, SQLException{
+        System.out.println(id);
+        System.out.println(username);
+        MovieFactory.deleteByUser(id, username);
+        ladeCollection(username);
+        return "movieCollection";
+    }
 }
