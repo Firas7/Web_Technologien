@@ -5,12 +5,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Weclome to our page </title>
+        <h:outputStylesheet library="css" name="style.css" />
     </h:head>
     <h:body>
-         <div>
+        <ui:include src="menu.xhtml"/> 
+        <div>
             Welcome <h:outputLabel value="#{user.username}"/>
         </div>
-        <ui:include src="menu.xhtml"/> 
     </h:body>
 </html>
 

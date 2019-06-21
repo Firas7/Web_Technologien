@@ -6,11 +6,13 @@
     <h:head>
         <title>Failure</title>
     </h:head>
-    <h:body style="position: absolute; top: 250px; left: 500px">
+    <h:outputStylesheet library="css" name="/style.css"  />
+    <h:body>
         <h2> password is incorrect</h2>
-        <h:form>
-            <h3> login agin please </h3>
-            <h:commandButton value="login" action="login"/>
+        <h:form id="form" styleClass="form">
+            <h2> Huch...dein Passwort war wohl nicht ganz richtig..</h2>
+            <h3> Bitte versuch es doch direkt nochmal </h3>
+            <h:commandButton value="Erneut versuchen.." action="login"></h:commandButton>
         </h:form>
     </h:body>
 </html>

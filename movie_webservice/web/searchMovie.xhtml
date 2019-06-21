@@ -7,9 +7,10 @@
     <h:head>
         <title> search a movie </title>
     </h:head>
+     <h:outputStylesheet library="css" name="style.css"  />
     <h:body>
        <ui:include src="menu.xhtml"/> 
-        <h:form>
+        <h:form styleClass="form">
             <div>
                 <h:selectOneMenu value = "#{searchController.s}"> 
                     <f:selectItem itemValue = "1" itemLabel = "Title" /> 
@@ -17,6 +18,7 @@
                     <f:selectItem itemValue = "3" itemLabel = "Schauspieler" /> 
                     <f:selectItem itemValue = "4" itemLabel = "Genre" />
                     <f:selectItem itemValue = "5" itemLabel = "Erscheinungsjahr" />
+                     <f:selectItem itemValue = "6" itemLabel = "Stars" />
                 </h:selectOneMenu>
             </div>
             <br/>
@@ -26,11 +28,11 @@
             
             <h:dataTable id="DTL" value="#{searchController.movies}" var="ml">
                 <h:column>
-                    <f:facet name="header">id</f:facet>
+                    <f:facet name="header">ID</f:facet>
                         #{ml.id}
                 </h:column>
                 <h:column>
-                        <f:facet name="header">title</f:facet>
+                        <f:facet name="header">Title</f:facet>
                         #{ml.title}
                 </h:column>
                 <h:column>
@@ -38,11 +40,12 @@
                         #{ml.year}
                 </h:column>
                 <h:column>
-                        <f:facet name="header">stars</f:facet>
+                        <f:facet name="header">Stars</f:facet>
                         #{ml.stars}
                 </h:column>
             </h:dataTable>
             </div>
+            
         </h:form>
     </h:body>
 </html>

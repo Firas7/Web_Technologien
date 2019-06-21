@@ -7,8 +7,9 @@
     <h:head>
         <title>Registering</title>
     </h:head>
+    <h:outputStylesheet library="css" name="style.css" />
     <h:body>
-        <h:form style="position: absolute; top: 250px; left: 500px"> 
+        <h:form styleClass="form"> 
               <h2>register JSF</h2>
             <h:outputLabel value="username" for="username"></h:outputLabel>
             <h:inputText id="username" required="true" value="#{user.username}" validatorMessage="Username muss aus min.4 und max.10 Zeichen bestehen">
@@ -19,7 +20,7 @@
             <f:validateLength minimum="4" maximum="8"></f:validateLength></h:inputSecret><h:message for="password" id="msg2"/>
             <br/> 
             <h:commandButton value="register" action="#{registerController.register(user.username, user.password)}"></h:commandButton>
+            <p class="message">login? <a href="login.xhtml">Jetzt anmelden</a></p>
         </h:form>
     </h:body>
 </html>
-

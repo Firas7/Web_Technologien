@@ -7,9 +7,10 @@
     <h:head>
         <title>Add a new Movie</title>
     </h:head>
+    <h:outputStylesheet library="css" name="style.css"/>
     <h:body>
         <ui:include src="menu.xhtml"/> 
-        <h:form>
+        <h:form styleClass="form2">
             <div><h:outputText value="Title"/> 
                 <h:inputText value="#{movie.title}" required="true"/></div><br/>
             <div><h:outputText value="Year"/>
